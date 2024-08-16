@@ -174,15 +174,11 @@ public class Main {
         Double p2 = Blist.get(person2);
 
         if (!person.equals(person2)) {
-            if (amount > 0) {
-                if (Blist.containsKey(person) && Blist.containsKey(person2)) {
-                    if (amount <= p1) {  // Check if the amount is less than or equal to person1's account balance
-                        Blist.put(person, p1 - amount);
-                        Blist.put(person2, p2 + amount);
-                        System.out.println("\nThe money has been transferred successfully!");
-                    } else {
-                        System.out.println("\nERROR\nInsufficient funds.");
-                    }
+            if (amount > 0 && amount <= p1) {
+                if (Blist.containsKey(person) && Blist.containsKey(person2)) {// Check if the amount is less than or equal to person1's account balance
+                    Blist.put(person, p1 - amount);
+                    Blist.put(person2, p2 + amount);
+                    System.out.println("\nThe money has been transferred successfully!");
                 } else {
                     System.out.println("\nERROR\nPerson(s) not found.");
                 }
